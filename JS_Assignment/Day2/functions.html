@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Day 2 – JavaScript Functions & Bindings</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      line-height: 1.6;
+    }
+    pre, code {
+      background: #f4f4f4;
+      padding: 10px;
+      display: block;
+      overflow-x: auto;
+    }
+    h2, h3 {
+      color: #2c3e50;
+    }
+    hr {
+      margin: 30px 0;
+    }
+  </style>
+</head>
+
+<body>
+
+  <h2>Day 2 – JavaScript Functions, Arrow Functions & Bindings</h2>
+
+  <hr>
+
+  <!-- Function Types -->
+  <h3>1. Three Types of Functions – Differences</h3>
+  <ol>
+    <li><strong>Function Declaration</strong> – Hoisted (can be called before definition)</li>
+    <li><strong>Function Expression</strong> – Not hoisted</li>
+    <li><strong>Arrow Function</strong> – Short syntax, no own <code>this</code></li>
+  </ol>
+
+  <hr>
+
+  <!-- Binding -->
+  <h3>2. What is Binding in JavaScript?</h3>
+  <p>
+    <strong>Binding</strong> means connecting a variable, function, or <code>this</code> keyword to a specific value or object.
+  </p>
+
+  <h3>Types of <code>this</code> Binding</h3>
+
+  <ol>
+    <li>
+      <strong>Default Binding</strong> – <code>this</code> refers to the global object.
+      <pre>
+function show() {
+  console.log(this);
+}
+show(); // window (or undefined in strict mode)
+      </pre>
+    </li>
+
+    <li>
+      <strong>Implicit Binding</strong> – <code>this</code> refers to the object calling the method.
+      <pre>
+const user = {
+  name: "Ajay",
+  sayName() {
+    console.log(this.name);
+  }
+};
+
+user.sayName(); // Ajay
+      </pre>
+    </li>
+
+    <li>
+      <strong>Explicit Binding</strong> – <code>this</code> is manually set using <code>call</code>, <code>apply</code>, or <code>bind</code>.
+      <pre>
+function greet() {
+  console.log(this.name);
+}
+
+const user = { name: "Ajay" };
+greet.call(user); // Ajay
+      </pre>
+    </li>
+
+    <li>
+      <strong>Arrow Function Binding</strong> – Arrow functions do not have their own <code>this</code>.
+      <pre>
+const user = {
+  name: "Ajay",
+  sayName: () => {
+    console.log(this.name);
+  }
+};
+
+user.sayName(); // undefined
+      </pre>
+    </li>
+  </ol>
+
+  <hr>
+
+  <!-- Arrow conversions -->
+  <h3>3. Convert greet() to Arrow Functions</h3>
+  <pre>
+const greet1 = (name) => {
+  return "Hello, " + name;
+};
+
+const greet2 = (name) => "Hello, " + name;
+
+const greet3 = name => "Hello, " + name;
+  </pre>
+
+  <hr>
+
+  <!-- calculateBill -->
+  <h3>4. calculateBill – Normal & Arrow Function</h3>
+  <pre>
+function calculateBill(amount, taxPercentage) {
+  return amount + (amount * taxPercentage / 100);
+}
+
+const calculateBillArrow = (amount, taxPercentage) =>
+  amount + (amount * taxPercentage / 100);
+  </pre>
+
+  <hr>
+
+  <!-- JavaScript Code -->
+  <h3>5. JavaScript Programs</h3>
+
+  <script>
+    // Function Declaration
+    function add1(a, b) {
+      return a + b;
+    }
+
+    // Function Expression
+    const add2 = function (a, b) {
+      return a + b;
+    };
+
+    // Arrow Function
+    const add3 = (a, b) => a + b;
+
+    // Parameters vs Arguments
+    function sum(a, b) {
+      return a + b;
+    }
+    sum(2, 3);
+
+    // Frequency of Characters
+    function getCharFrequency(str) {
+      const freq = {};
+      for (let char of str) {
+        freq[char] = (freq[char] || 0) + 1;
+      }
+      return freq;
+    }
+
+    // Second Largest Number
+    function secondLargest(arr) {
+      let max = -Infinity;
+      let second = -Infinity;
+
+      for (let num of arr) {
+        if (num > max) {
+          second = max;
+          max = num;
+        } else if (num < max && num > second) {
+          second = num;
+        }
+      }
+      return second;
+    }
+
+    // Anagram Check
+    function isAnagram(str1, str2) {
+      const format = str =>
+        str.toLowerCase().replace(/\s/g, "");
+
+      str1 = format(str1);
+      str2 = format(str2);
+
+      if (str1.length !== str2.length) return false;
+
+      const count = {};
+      for (let ch of str1) count[ch] = (count[ch] || 0) + 1;
+      for (let ch of str2) {
+        if (!count[ch]) return false;
+        count[ch]--;
+      }
+      return true;
+    }
+
+    // Remove Duplicates
+    function uniqueValues(arr) {
+      const result = [];
+      for (let num of arr) {
+        if (!result.includes(num)) {
+          result.push(num);
+        }
+      }
+      return result;
+    }
+
+    // Group People by Age
+    function groupByAge(people) {
+      const grouped = {};
+      for (let person of people) {
+        if (!grouped[person.age]) {
+          grouped[person.age] = [];
+        }
+        grouped[person.age].push(person.name);
+      }
+      return grouped;
+    }
+
+    // Factorial
+    function factorial(n) {
+      let result = 1;
+      for (let i = 1; i <= n; i++) {
+        result *= i;
+      }
+      return result;
+    }
+
+    // Reverse String
+    function reverseString(str) {
+      let rev = ""; 
+      for (let ch of str) {
+        rev = ch + rev;
+      }
+      return rev;
+    }
+
+    // Prime Number
+    function isPrime(n) {
+      if (n <= 1) return false;
+      for (let i = 2; i <= Math.sqrt(n); i++) {
+        if (n % i === 0) return false;
+      }
+      return true;
+    }
+  </script>
+
+</body>
+</html>
