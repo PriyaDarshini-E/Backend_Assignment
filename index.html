@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Assignments — Portfolio</title>
+
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            bg: "#0f1724",
+          }
+        }
+      }
+    }
+  </script>
+</head>
+
+<body class="min-h-screen bg-bg text-slate-200 flex flex-col">
+
+  <!-- Header -->
+  <header class="flex items-center justify-between px-6 py-5
+                 backdrop-blur bg-white/5 border-b border-white/10">
+
+    <!-- Brand -->
+    <div class="flex items-center gap-4">
+      <div class="w-12 h-12 rounded-xl bg-gradient-to-r from-indigo-500 to-sky-400
+                  flex items-center justify-center font-extrabold text-white">
+        PD
+      </div>
+      <div>
+        <h1 class="text-lg font-bold">Assignments</h1>
+        <p class="text-sm text-slate-400">Web Development • 2025</p>
+      </div>
+    </div>
+
+    <!-- Nav -->
+    <nav class="hidden md:flex gap-3">
+      <a href="JS_Assignment/JS_index.html"
+         class="px-4 py-2 rounded-full border border-white/10
+                hover:bg-white/10 transition font-semibold">
+        JavaScript
+      </a>
+    </nav>
+  </header>
+
+  <!-- Main -->
+  <main class="flex-1 max-w-6xl mx-auto w-full px-6 py-10">
+
+    <!-- Hero -->
+    <section class="grid md:grid-cols-2 gap-6 mb-10">
+      <div class="flex gap-4 p-6 rounded-xl bg-white/5 border border-white/10">
+        <div class="w-16 h-16 rounded-xl bg-gradient-to-r from-pink-400 to-yellow-300
+                    flex items-center justify-center font-bold text-black">
+          A
+        </div>
+        <div>
+          <h2 class="text-xl font-bold mb-1">All assignments in one place</h2>
+          <p class="text-slate-400 text-sm">
+            Quickly open HTML, CSS, JavaScript, Bootstrap and React projects.
+          </p>
+        </div>
+      </div>
+
+      <div class="p-6 rounded-xl bg-white/5 border border-white/10 text-right">
+        <h2 class="text-xl font-bold mb-1">Interactive & Responsive</h2>
+        <p class="text-slate-400 text-sm">
+          Modern UI with animations, hover effects and keyboard accessibility.
+        </p>
+      </div>
+    </section>
+
+    <!-- Cards -->
+    <section class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      
+      <!-- Card -->
+      <div class="group rounded-xl bg-white/5 border border-white/10
+                  hover:-translate-y-2 hover:shadow-xl transition overflow-hidden">
+
+        <div class="h-36 flex items-center justify-center bg-white/5">
+          <img src="Images/js.png" alt="JavaScript"
+               class="w-400 h-400 group-hover:scale-110 transition">
+        </div>
+
+        <div class="p-5 flex flex-col gap-3">
+          <h3 class="text-lg font-bold text-black">JavaScript</h3>
+          <p class="text-sm text-slate-400">
+            DOM, events, fetch, promises and modern JS concepts.
+          </p>
+          <a href="JS_Assignment/JS_index.html"
+             class="mt-auto inline-block text-center
+                    bg-gradient-to-r from-indigo-500 to-sky-400
+                    text-white font-semibold py-2 rounded-lg hover:opacity-90">
+            Open JavaScript →
+          </a>
+        </div>
+      </div>
+
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="text-center py-4 text-sm text-slate-400 border-t border-white/10">
+    © 2025 Priya Darshini | Web Development Assignments
+  </footer>
+
+</body>
+</html>

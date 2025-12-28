@@ -1,0 +1,169 @@
+:root {
+  --bg: #0f1724;
+  --panel: rgba(255, 255, 255, 0.06);
+  --glass: rgba(255, 255, 255, 0.06);
+  --accent-1: linear-gradient(90deg, #6c5ce7, #74b9ff);
+  --accent-2: linear-gradient(90deg, #ff9a8b, #fecf6a);
+  --muted: #98a0b3;
+  --glass-border: rgba(255, 255, 255, 0.08);
+  --card-glow: 0 8px 30px rgba(108, 92, 231, 0.12);
+  --radius: 14px;
+  color-scheme: dark;
+}
+
+/* Reset & base */
+* { box-sizing: border-box; margin: 0; padding: 0 }
+html, body { height: 100% }
+
+body {
+  font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto;
+  background:
+    radial-gradient(1200px 300px at 10% 10%, rgba(116,185,255,0.06), transparent),
+    radial-gradient(900px 300px at 98% 90%, rgba(108,92,231,0.06), transparent),
+    var(--bg);
+  color:#e8eef8;
+  display:flex;
+  flex-direction:column;
+  min-height:100vh;
+  gap:2rem;
+}
+
+/* Header */
+header {
+  width:100%;
+  padding:1.25rem 1.5rem;
+  background:linear-gradient(90deg,rgba(255,255,255,0.03),rgba(255,255,255,0.01));
+  border-bottom:1px solid rgba(255,255,255,0.04);
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  backdrop-filter:blur(6px);
+}
+
+.brand{ display:flex; align-items:center; gap:0.9rem }
+.logo{
+  width:52px;height:52px;background:var(--accent-1);
+  border-radius:12px;display:grid;place-items:center;
+  font-weight:800;font-size:18px;color:white;
+}
+
+.title{ display:flex;flex-direction:column }
+.title h1{ font-size:1.05rem }
+.title p{ font-size:.78rem;color:var(--muted) }
+
+/* Nav */
+nav.main{ display:flex;gap:.6rem;align-items:center }
+.navlinks{ display:flex;gap:.6rem;flex-wrap:wrap }
+.navlinks a{
+  padding:8px 14px;border-radius:999px;
+  background:transparent;border:1px solid rgba(255,255,255,0.03);
+  color:white;text-decoration:none;font-weight:600;
+}
+.navlinks a:hover{ transform:translateY(-3px) }
+
+/* Mobile nav */
+.menu-toggle{ display:none }
+@media (max-width:840px){
+  .navlinks{ display:none }
+  .menu-toggle{ display:inline-flex;color:var(--muted) }
+}
+
+/* Container */
+.container{ width:100%; max-width:1200px; margin:auto; padding:2rem 1.25rem }
+
+/* Hero */
+.hero{
+  display:flex;flex-wrap:wrap;
+  gap:1.2rem;margin-bottom:1.5rem;
+}
+
+.hero-card{
+  flex:1 1 360px;
+  background:rgba(255,255,255,0.05);
+  border-radius:var(--radius);
+  padding:1.2rem;border:1px solid var(--glass-border);
+  display:flex;gap:1rem;align-items:center;
+}
+.hero-card .left{
+  width:70px;height:70px;background:var(--accent-2);
+  border-radius:12px;display:grid;place-items:center;
+}
+
+/* Cards Grid */
+.cards{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:1.25rem;
+}
+
+.card{
+  background:rgba(255,255,255,0.04);
+  border-radius:12px;overflow:hidden;
+  border:1px solid var(--glass-border);
+  display:flex;flex-direction:column;
+  transition:0.3s;
+}
+
+.card:hover{
+  transform:translateY(-8px);
+  box-shadow:0 15px 40px rgba(0,0,0,0.5);
+}
+
+.card-figure{
+  height:150px;
+  background:rgba(255,255,255,0.03);
+  display:grid;place-items:center;
+}
+.card-figure img{
+  width:50px;
+  height:50px;
+  object-fit:cover;
+}
+
+.card-body{
+  padding:1rem 1rem 1.2rem;
+  display:flex;flex-direction:column;gap:.5rem;
+}
+.card-body h3{ margin:0;font-size:1.1rem;color:#fff }
+.card-body p{ color:var(--muted);font-size:.9rem;line-height:1.4 }
+
+.card-body a{
+  text-decoration:none;font-weight:700;
+  color:#fff;background:var(--accent-1);
+  padding:8px 12px;border-radius:10px;
+}
+
+.card.tech .card-figure{
+  height:120px !important; /* FIXED */
+}
+.card.tech .card-body{
+  padding:1.4rem 1.2rem;   /* FIXED */
+}
+
+/* Responsive */
+@media (max-width:1100px){
+  .cards{ grid-template-columns:repeat(2,1fr) }
+}
+@media (max-width:680px){
+  .cards{ grid-template-columns:1fr }
+  .card-figure{ height:180px }
+}
+
+/* Fade-in animation delays */
+.fade-in {
+  opacity: 0;
+  transform: translateY(12px);
+  animation: fadeInUp 0.6s ease forwards;
+}
+
+.delay-1 { animation-delay: 0.2s; }
+.delay-2 { animation-delay: 0.35s; }
+.delay-3 { animation-delay: 0.5s; }
+.delay-4 { animation-delay: 0.65s; } /* NEW for SQL card */
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
