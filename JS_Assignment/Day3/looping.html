@@ -1,0 +1,221 @@
+<script>
+    // Return only even numbers (for loop)
+    function getEvenNumbers(arr) {
+  let result = [];
+
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] % 2 === 0) {
+      result.push(arr[i]);
+    }
+  }
+
+  return result;
+}
+
+// Test
+console.log(getEvenNumbers([1, 2, 3, 4, 5, 6])); // [2,4,6]
+
+
+// Day of week using switch
+function getDay(num) {
+  switch (num) {
+    case 1: return "Monday";
+    case 2: return "Tuesday";
+    case 3: return "Wednesday";
+    case 4: return "Thursday";
+    case 5: return "Friday";
+    case 6: return "Saturday";
+    case 7: return "Sunday";
+    default: return "Invalid input";
+  }
+}
+
+// Test
+console.log(getDay(5)); // Friday
+console.log(getDay(9)); // Invalid input
+
+
+// Count students by gradeCount students by grade
+function countGrades(students) {
+  let result = { A: 0, B: 0, C: 0 };
+
+  for (let i = 0; i < students.length; i++) {
+    let marks = students[i].marks;
+
+    if (marks >= 90) result.A++;
+    else if (marks >= 75) result.B++;
+    else result.C++;
+  }
+
+  return result;
+}
+
+// Test
+const students = [
+  { name: "A", marks: 92 },
+  { name: "B", marks: 80 },
+  { name: "C", marks: 60 }
+];
+
+console.log(countGrades(students));
+// { A: 1, B: 1, C: 1 }
+
+
+// Truthy or Falsy
+function checkTruthy(value) {
+  return value ? "truthy" : "falsy";
+}
+
+// Tests
+console.log(checkTruthy(0));        // falsy
+console.log(checkTruthy(""));       // falsy
+console.log(checkTruthy(null));     // falsy
+console.log(checkTruthy(undefined));// falsy
+console.log(checkTruthy([]));       // truthy
+console.log(checkTruthy({}));       // truthy
+console.log(checkTruthy(false));    // falsy
+console.log(checkTruthy("hello"));  // truthy
+
+
+// Filter only truthy values
+function getTruthyValues(arr) {
+  let result = [];
+
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i]) {
+      result.push(arr[i]);
+    }
+  }
+
+  return result;
+}
+
+// Test
+console.log(getTruthyValues([0, 1, "", "hi", null, true]));
+// [1, "hi", true]
+
+
+// Name logic (truthy/falsy)
+function getFullName(firstName, lastName, nickname) {
+  if (firstName && lastName) {
+    return `${firstName} ${lastName}`;
+  }
+  if (firstName) {
+    return firstName;
+  }
+  if (nickname) {
+    return nickname;
+  }
+  return "Anonymous";
+}
+
+// Tests
+console.log(getFullName("Priya", "D")); // Priya D
+console.log(getFullName("Priya", "")); // Priya
+console.log(getFullName("", "", "PD")); // PD
+console.log(getFullName("", "", ""));   // Anonymous
+
+
+// loop problem
+for (var i = 0; i < 3; i++) {
+  setTimeout(() => {
+    console.log(i);
+  }, 1000);
+}
+// Output: 3 3 3
+
+
+for (let i = 0; i < 3; i++) {
+  setTimeout(() => {
+    console.log(i);
+  }, 1000);
+}
+// Output: 0 1 2
+
+for (var i = 0; i < 3; i++) {
+  (function (x) {
+    setTimeout(() => {
+      console.log(x);
+    }, 1000);
+  })(i);
+}
+// Output: 0 1 2
+
+
+// var / let / const behavior
+var a = 10;
+a = 20; // ✅ allowed
+
+let b = 30;
+b = 40; // ✅ allowed
+
+const c = 50;
+// c = 60 ❌ Error
+
+const obj = { name: "JS" };
+obj.name = "JavaScript"; // ✅ allowed
+// obj = {} ❌ Error
+
+
+// createMultiplier (closure)
+function createMultiplier(x) {
+  return function (y) {
+    return x * y;
+  };
+}
+
+// Test
+const double = createMultiplier(2);
+console.log(double(5)); // 10
+
+const triple = createMultiplier(3);
+console.log(triple(5)); // 15
+
+// secretPassword (private variable)
+function secretPassword() {
+  let password = "";
+
+  return {
+    setPassword(newPass) {
+      password = newPass;
+    },
+    checkPassword(guess) {
+      return guess === password;
+    }
+  };
+}
+
+// Test
+const user = secretPassword();
+user.setPassword("1234");
+
+console.log(user.checkPassword("1234")); // true
+console.log(user.checkPassword("0000")); // false
+
+// once function
+function once(fn) {
+  let called = false;
+  let result;
+
+  return function () {
+    if (!called) {
+      result = fn();
+      called = true;
+    }
+    return result;
+  };
+}
+
+// Test
+const init = once(() => {
+  console.log("Executed");
+  return 100;
+});
+
+console.log(init()); // Executed, 100
+console.log(init()); // 100
+console.log(init()); // 100
+
+
+
+</script>
