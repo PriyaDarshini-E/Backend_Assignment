@@ -1,0 +1,84 @@
+<script>
+    // 1. Function with callback → print “Task Completed” after callback
+    const mainfunct = (cnf) => {
+        console.log("Main function start");
+        cnf(); // callback runs first
+        console.log("Main function end");
+    };
+
+    const callbackfunct = () => {
+        console.log("Callback function Executed Task Completed");
+    };
+    mainfunct(callbackfunct);
+
+    // 2. Callback to validate age eligibility
+    const mainfunction = (checkAge) => {
+        const age = 20;
+        checkAge(age);
+    };
+
+    const checkAge = (age) => {
+        if (age >= 18) {
+            console.log("Eligible to vote");
+        } else {
+            console.log("Not eligible");
+        }
+    };
+
+    mainfunction(checkAge);
+
+
+    //3. Simulate API call → success callback → final message
+    //     const fakeApiCall = (successCallback) => {
+    //         console.log("API calling");
+    //         setTimeout(() => {
+    //     successCallback();
+    //   }, 2000);
+    // }
+
+    // const successCallback = (() => {
+    //     console.log("Fetching data...");
+    //   console.log("Processing Data Completed");
+    // });
+
+    // fakeApiCall(successCallback);
+
+    // 4. Add 3 elements & remove first element
+    let arr = [1, 2, 3, 4, 5];
+    console.log("before remove", arr);
+    arr.shift();
+    console.log("after remove", arr);
+
+    //5. Replace last element without using index
+    let arr1 = [1, 2, 3, 4, 5];
+    console.log("before replace", arr1);
+    arr1.pop();
+    arr1.push(6);
+    console.log("after replace", arr1);
+
+    // 6. Remove exactly 2 elements from middle
+    let arr2 = [10, 20, 30, 40, 50, 60];
+    console.log("before remove", arr2);
+    arr2.splice(2, 2); 
+   console.log("after remove", arr2);
+
+    // 7. Return only even numbers using filter
+    let numb = [1,2,3,4,5,6,7,8,9,10];
+    let even = numb.filter(num => num % 2 ===0);
+    console.log(even);  
+
+
+    // 8. Convert prices to GST-added prices using map
+    let price = [100,200,300,400,500];
+    let gst = [0.20];
+    let total = price.map(e => e+gst);
+    console.log(total);
+    
+    // 9. Find total salary using reduce
+    let salary = [20000,30000,50000,25000,35000];
+
+    let totalsal = salary.reduce((sum,salary) => sum + salary ,0);
+    console.log(totalsal);
+    
+    
+</script>

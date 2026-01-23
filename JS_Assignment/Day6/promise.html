@@ -1,0 +1,54 @@
+<script>
+    // 1.Promise resolve after delay
+    const promise1 = new Promise((resolve) => {
+  setTimeout(() => {
+    resolve("Promise resolved after 2 seconds");
+  }, 2000);
+});
+
+promise1.then(console.log);
+
+
+// 2.Promise reject example
+const promise2 = new Promise((resolve, reject) => {
+  let success = false;
+  success ? resolve("Success") : reject("Failed");
+});
+
+promise2
+  .then(console.log)
+  .catch(console.log);
+
+
+
+// 3.Promise chaining
+new Promise((resolve) => {
+  resolve(5);
+})
+.then((num) => num * 2)
+.then((result) => console.log("Final result:", result));
+
+
+
+// 4. Promise.all usage
+const p1 = Promise.resolve(10);
+const p2 = Promise.resolve(20);
+const p3 = Promise.resolve(30);
+
+Promise.all([p1, p2, p3]).then((values) => {
+  console.log("All values:", values);
+});
+
+
+// 5.Convert callback to promise
+function getDataPromise() {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      resolve("Data received");
+    }, 1000);
+  });
+}
+
+getDataPromise().then(console.log);
+
+</script>

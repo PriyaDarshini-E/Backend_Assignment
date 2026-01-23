@@ -1,0 +1,64 @@
+<script>
+    // ASYNC / AWAIT
+
+// 1.Async function returning value
+async function greet() {
+  return "Hello Async!";
+}
+
+
+greet().then(console.log);
+
+
+// 2.try / catch error handling
+async function fetchData() {
+  try {
+    throw new Error("Something went wrong");
+  } catch (error) {
+    console.log(error.message);
+  }
+}
+
+fetchData();
+
+
+// 3.Sequential await calls
+function delay(msg, time) {
+  return new Promise((resolve) => {
+    setTimeout(() => resolve(msg), time);
+  });
+}
+
+async function runSequential() {
+  console.log(await delay("First", 1000));
+  console.log(await delay("Second", 1000));
+}
+
+runSequential();
+
+// Parallel await using Promise.all
+async function runParallel() {
+  const results = await Promise.all([
+    delay("Task 1", 1000),
+    delay("Task 2", 1000)
+  ]);
+  console.log(results);
+}
+
+runParallel();
+
+
+// Convert promise to async/await
+function getMessage() {
+  return Promise.resolve("Converted to async/await");
+}
+
+async function showMessage() {
+  const msg = await getMessage();
+  console.log(msg);
+}
+
+showMessage();
+
+
+</script>

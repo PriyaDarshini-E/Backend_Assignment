@@ -1,0 +1,202 @@
+<script>
+    // Task 1 :
+
+ // 1 .Rewrite ES5 using let & const
+    // ES5
+var x = 10;
+var y = 20;
+var sum = x + y;
+
+// ES6
+const x = 10;
+const y = 20;
+let sum = x + y;
+console.log(sum);
+
+// 2️. Block scope using let
+if (true) {
+  let message = "Inside block";
+  console.log(message);
+}
+// console.log(message); ❌ Error (block scoped)
+
+// 3️. Reassign const
+const age = 25;
+age = 30; // ❌ TypeError: Assignment to constant variable
+
+// 4️. Bug with var, fixed with let
+// Buggy
+for (var i = 0; i < 3; i++) {
+  setTimeout(() => console.log(i), 1000);
+}
+// Output: 3 3 3
+
+// Fixed
+for (let i = 0; i < 3; i++) {
+  setTimeout(() => console.log(i), 1000);
+}
+// Output: 0 1 2
+// Buggy
+for (var i = 0; i < 3; i++) {
+  setTimeout(() => console.log(i), 1000);
+}
+// Output: 3 3 3
+
+// Fixed
+for (let i = 0; i < 3; i++) {
+  setTimeout(() => console.log(i), 1000);
+}
+// Output: 0 1 2
+
+
+// Task 2 :
+// 1️⃣ Normal → Arrow
+function add(a, b) {
+  return a + b;
+}
+
+const add = (a, b) => a + b;
+
+// 2️⃣ One parameter
+const square = x => x * x;
+
+// 3️⃣ Return object
+const user = (name, age) => ({ name, age });
+
+// 4️⃣ Arrow inside map()
+const nums = [1, 2, 3];
+const doubled = nums.map(n => n * 2);
+console.log(doubled);
+
+// Task 3 :
+// 1.Print user details
+const names = "Priya";
+const ages = 23;
+console.log(`Name: ${names}, Age: ${ages}`);
+
+// 2. Old concat → template
+// Old
+console.log("Hello " + name);
+
+// New
+console.log(`Hello ${name}`);
+
+// 3.Multiline string
+const msg = `
+Welcome
+to
+JavaScript
+`;
+console.log(msg);
+
+// 4.Expression inside ${}
+const a = 5, b = 10;
+console.log(`Sum = ${a + b}`);
+
+// Class Tasks :
+// 1.Student class
+class Student {
+  constructor(name, age) {
+    this.name = name;
+    this.age = age;
+  }
+}
+
+// 2.BankAccount class
+class BankAccount {
+  constructor(balance) {
+    this.balance = balance;
+  }
+
+  deposit(amount) {
+    this.balance += amount;
+  }
+
+  withdraw(amount) {
+    this.balance -= amount;
+  }
+}
+
+
+// 3.Create 3 objects
+const s1 = new Student("A", 20);
+const s2 = new Student("B", 21);
+const s3 = new Student("C", 22);
+
+// 4.Function constructor → class
+// Old
+function Person(name) {
+  this.name = name;
+}
+
+// New
+class Person {
+  constructor(name) {
+    this.name = name;
+  }
+}
+
+// Import / Export Tasks
+
+
+// Default export
+
+
+// Destructuring
+// Array
+const arr = [1, 2, 3];
+const [one, two] = arr;
+
+// Object
+const users = { Name: "Priya", Age: 23 };
+const { Name, Ages } = users;
+
+// Rename
+const { Name: userName } = users;
+
+// Function parameter
+function show({ name }) {
+  console.log(name);
+}
+
+// Spread Operator
+// copy , merge,update an array using spread opertor
+const copy = [...arr];
+const merged = [...a1, ...a2];
+
+const updated = { ...user, age: 25 };
+
+// pass array values into a function using spread.
+function sum(a, b, c) {
+  return a + b + c;
+}
+sum(...[1, 2, 3]);
+
+// Rest Operator
+function total(...nums) {
+  return nums.reduce((a, b) => a + b);
+}
+
+const [first, ...rest] = [1, 2, 3, 4];
+
+// Ternary Operator
+const num = 5;
+const result = num % 2 === 0 ? "Even" : "Odd";
+
+// Optional Chaining
+user?.address?.city;
+arr?.[0];
+
+// Nullish Coalescing (??)
+const value = 0 ?? 10; // 0
+const name = "" ?? "Guest"; // ""
+
+
+
+
+
+
+
+
+
+</script>

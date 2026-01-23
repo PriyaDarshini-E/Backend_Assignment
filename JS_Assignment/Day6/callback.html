@@ -1,0 +1,64 @@
+<script>
+ // CALLBACK
+        // 1.setTimeout callback – print message
+    setTimeout(() => {
+  console.log("Hello! This message is printed after 2 seconds");
+}, 2000);
+
+// 2.Callback-based calculator
+function calculator(a, b, callback) {
+  callback(a, b);
+}
+
+calculator(10, 5, (x, y) => {
+  console.log("Addition:", x + y);
+});
+
+// 3.Nested callback example
+function step1(callback) {
+  setTimeout(() => {
+    console.log("Step 1 completed");
+    callback();
+  }, 1000);
+}
+
+function step2(callback) {
+  setTimeout(() => {
+    console.log("Step 2 completed");
+    callback();
+  }, 1000);
+}
+
+step1(() => {
+  step2(() => {
+    console.log("All steps completed");
+  });
+});
+
+// 4.Callback error handling
+function divide(a, b, callback) {
+  if (b === 0) {
+    callback("Error: Division by zero", null);
+  } else {
+    callback(null, a / b);
+  }
+}
+
+divide(10, 2, (err, result) => {
+  if (err) console.log(err);
+  else console.log("Result:", result);
+});
+
+// 5.Simulate API using callback
+function fetchUser(callback) {
+  setTimeout(() => {
+    callback({ id: 1, name: "Priya" });
+  }, 1500);
+}
+
+fetchUser((user) => {
+  console.log("User data:", user);
+});
+
+
+</script>
