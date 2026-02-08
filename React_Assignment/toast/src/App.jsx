@@ -22,8 +22,7 @@ const App = () => {
         <Route path="/task3" element={<Task3 />} />
         <Route path="/task4" element={<Task4 />} />
         <Route path="/task5" element={<Task5 />} />
-
-
+        
       </Routes>
     </>
   );

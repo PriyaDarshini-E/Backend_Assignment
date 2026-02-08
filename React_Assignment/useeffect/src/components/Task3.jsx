@@ -14,13 +14,12 @@ const Task3 = () => {
     <div className="min-h-screen flex items-center justify-center bg-gray-100">
       <div className="bg-white p-6 rounded-xl shadow-md w-96 text-center">
         <h1 className="text-xl font-semibold mb-4 text-blue-600">
-          Task 3 – Show / Hide
+          Task 3 - Show / Hide
         </h1>
 
         <button
           onClick={() => setShow(!show)}
-          className="bg-indigo-500 text-white px-4 py-2 rounded-lg mb-4"
-        >
+          className="bg-indigo-500 text-white px-4 py-2 rounded-lg mb-4">
           {show ? "Hide" : "Show"}
         </button>
 

@@ -8,7 +8,7 @@ const Navbar = () => {
     <nav className="bg-gray-900 text-white px-6 py-4 flex justify-between items-center">
       {/* Logo / Title */}
       <h1 className="text-xl font-bold">
-        useMemo Process
+          useReducer Process
       </h1>
 
       {/* Navigation Links */}

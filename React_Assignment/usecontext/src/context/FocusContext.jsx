@@ -1,6 +1,6 @@
 import { createContext, useRef } from "react";
 
-export const FocusContext = createContext();
+export const FocusContext = createContext();//creating context 
 
 export const FocusProvider = ({ children }) => {
   const inputRef = useRef(null);
